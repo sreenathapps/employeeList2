@@ -35,7 +35,7 @@ public class EmployeeH2Service implements EmployeeRepository {
     @Override
     public Employee addEmployee(Employee employee) {
 
-        db.update("INSERT INTO EMPLOYEELIST(employeeName, email, department) VALUES (?, ?, ?, ?)",employee.getEmployeeName(), employee.getEmail(), employee.getDepartment());
+        db.update("INSERT INTO EMPLOYEELIST(employeeName, email, department) VALUES ( ?, ?, ?)",employee.getEmployeeName(), employee.getEmail(), employee.getDepartment());
         Employee savedEmployee = db.queryForObject("SELECT * FROM EMPLOYEELIST WHERE email = ? EMPLOYEENAME = ? ", new EmployeeRowMapper() ,employee.getEmail(), employee.getEmployeeName());
         return savedEmployee;
     }
